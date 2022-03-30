@@ -12,8 +12,7 @@ public class DashboardController
   {
     return "index";
   }
-  @GetMapping
- ("/dashboard")
+  @GetMapping("/dashboard")
   public String dashboard()
   {
 	  return "dashboard";
