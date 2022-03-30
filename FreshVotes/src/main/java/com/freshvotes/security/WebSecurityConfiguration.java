@@ -22,6 +22,7 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		http.csrf().disable()
 		.authorizeRequests()
 		.antMatchers("/").permitAll()
+		.antMatchers("/login").permitAll()
 		.anyRequest().hasRole("USER").and()
 		.formLogin()
 		.loginPage("/login")
