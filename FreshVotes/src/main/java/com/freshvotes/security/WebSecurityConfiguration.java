@@ -13,24 +13,24 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
   
-	@Autowired
+  @Autowired
   private UserDetailsService userDetailsService;
 
-@Bean
+  @Bean
   public PasswordEncoder getPasswordEncoder() {
     return new BCryptPasswordEncoder();
   }
   
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-	  auth
-	  .userDetailsService(userDetailsService)
-	  .passwordEncoder(getPasswordEncoder());
-	  
+    auth
+      .userDetailsService(userDetailsService)
+      .passwordEncoder(getPasswordEncoder());
+        
 //    auth.inMemoryAuthentication()
 //        .passwordEncoder(getPasswordEncoder())
-//        .withUser("priyakeshavamurthy11@gmail.com")
-//        .password(getPasswordEncoder().encode("andal"))
+//        .withUser("trevor@craftycodr.com")
+//        .password(getPasswordEncoder().encode("asdfasdf"))
 //        .roles("USER");
   }
   
@@ -39,6 +39,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     http
         .authorizeRequests()
           .antMatchers("/").permitAll()
+          .antMatchers("/admin/**").hasRole("ADMIN")
           .anyRequest().hasRole("USER").and()
         .formLogin()
           .loginPage("/login")
