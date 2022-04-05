@@ -4,18 +4,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class DashboardController 
-{
-	//@RequestMapping(value="/", method=RequestMethod.GET)
+public class DashboardController {
+  
   @GetMapping("/")
-  public String rootView ()
-  {
+  public String rootView () {
     return "index";
   }
-  @GetMapping("/dashboard")
-  public String dashboard()
-  {
-	  return "dashboard";
-	   }
   
+  @GetMapping("/dashboard")
+  public String dashboard() {
+    return "dashboard";
+  }
 }
